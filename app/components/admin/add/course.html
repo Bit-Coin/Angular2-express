@@ -1,0 +1,107 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h3 class="text-page m-b-30"><strong>Add Course</strong></h3>
+        <div class="panel padd-min">
+            <div class="panel-heading">
+                <h3 class="text-page m-l-15 m-t-15 m-b-0"><strong></strong></h3>
+            </div>
+            
+            <div class="panel-body">
+                <div class=" form">
+                    <form class="cmxform form-horizontal tasi-form" [ngFormModel]="courseForm" (submit)="SubmitCourse(courseForm.value)">
+                        <div class="container-fluid">
+                            
+                            <div class="form-group" [ngClass]="{ 'has-error' : !coursetitle.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="ctitle" class="control-label text-left text-page">Course Title</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class="text-page form-control" id="ctitle" name="ctitle" type="text" value="Fire Safety" ngControl="coursetitle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : !coursedescription.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="cdescription" class="control-label text-left text-page">Course Description</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <textarea class="page-color text-page form-control" id="cdescription" name="cdescription" type="text" ngControl="coursedescription" value="A course regarding fire safety in the work place.">A course regarding fire safety in the work place.</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr class="m-t-10 m-b-25">
+                        <div class="m-l-5 m-r-5">
+                            <div class="row">
+                               
+                                <div class="col-xs-12 text-right">
+                                    <a  class="btn btn-primary w-sm" (click)="addLesson(courseForm)">Add Lesson</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="table-responsive">
+                                <table class="table text-page">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Lesson Name</th>
+                                            <th>Video Count</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                        
+                                    
+                                    <tr *ngFor="let lesson of lessonData">
+                                        <td>
+                                            <label class="cr-styled">
+                                                <input type="checkbox">
+                                                <i class="fa"></i>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <strong>{{lesson.lessonname}}</strong>
+                                        </td>
+                                        <td>
+                                            <strong>{{getVideoCount(lesson)}}</strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <a  class="btn w-sm btn-md btn-primary" (click)="gotoEditLesson(lesson)" >Edit</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                                
+                            <div class="white-space m-t-30 m-b-30">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="sr-only">Empty Space</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-l-5 m-r-5">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input type="button" (click)="cancel()"  value="Back" class="btn btn-primary m-b-10 w-sm">
+                                    </div>
+                                    <div class="col-xs-8 text-right">
+                                        <input type="button" (click)="cancel()" value="Cancel" class="btn btn-primary m-b-10 w-sm">
+                                        <input type="submit" value="Save" class="btn btn-primary m-b-10 w-sm m-l-10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</section>

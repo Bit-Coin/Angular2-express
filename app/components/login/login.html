@@ -1,0 +1,52 @@
+<div class="wrapper-page animated fadeInDown">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading"> 
+           <h3 class="text-center m-t-10"> Sign In</h3>
+        </div> 
+
+        <form class="form-horizontal m-t-40" [ngFormModel]="LoginForm" (submit)="doLogin(LoginForm.value)">
+            <div class="text-danger">
+                <em *ngIf="authFailure">This login was failure, Please try again.</em>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !username.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control" type="text" ngControl="username" placeholder="Username">
+                    <em *ngIf="!username.valid && submitAttempt"></em>
+                </div>
+            </div>
+            
+            <div class="form-group " [ngClass]="{ 'has-error' : !password.valid && submitAttempt }">                
+                <div class="col-xs-12">
+                    <input class="form-control" type="password" ngControl="password" placeholder="Password">
+                    <em *ngIf="password.hasError('required') && submitAttempt"></em>
+                    <em *ngIf="password.hasError('minlength') && submitAttempt">Must be at least 6 characters</em>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    <label class="cr-styled">
+                        <input type="checkbox" checked>
+                        <i class="fa"></i> 
+                        Remember me
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group text-right">
+                <div class="col-xs-12">
+                    <button class="btn btn-purple w-md" type="submit">Log In</button>
+                </div>
+            </div>
+            <div class="form-group m-t-30">
+                <div class="col-sm-7">
+                    <a [routerLink]="['Forgetpwd']"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+                </div>
+                <div class="col-sm-5 text-right">
+                    <a [routerLink]="['SignUp']">Create an account</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+<div class="wrapper-page animated fadeInDown">

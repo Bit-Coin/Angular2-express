@@ -1,0 +1,24 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h2 class="text-page m-b-0"><strong>{{getCourseTitle()}}</strong></h2>
+        <h4 class="text-page m-b-30 m-t-0"><strong>{{getCountLesson()}} Lessons</strong></h4>
+        <ul class="list-unstyled h-list">
+            <li *ngFor="let lesson of lessonList; let i = index">
+                <a class="block-btn color-white" (click)="gotoLessonVideo(lesson,i)" >
+                    <div class="row">
+                        <div class="col-sm-5">
+                            {{i + 1}} {{getLessonName(lesson)}}
+                        </div>
+                        <div class="col-sm-5 text-right">
+                            {{getCurrentLessonStatus(lesson)}}
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <i class="fa fa-film m-r-5"></i>{{lesson.count}} Videos 
+                        </div>
+                    </div>
+                </a>                    
+            </li>                     
+        </ul>
+    </div>
+        
+</section>

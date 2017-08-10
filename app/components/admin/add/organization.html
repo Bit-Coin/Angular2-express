@@ -1,0 +1,127 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h3 class="text-page m-b-30"><strong>Add Organization</strong></h3>
+        <div class="panel padd-min">
+            <div class="panel-heading">
+                <h3 class="text-page m-l-15 m-t-15"><strong></strong></h3>
+            </div>
+            
+            <div class="panel-body">
+                <div class=" form">
+                    <form class="cmxform form-horizontal tasi-form" [ngFormModel]="OrganizeForm" (submit)="AddOrgs(OrganizeForm.value)">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group" >
+                                        <div class=""  [ngClass]="{ 'has-error' : !firstname.valid && submitAttempt }">
+                                            <div class="col-lg-2">
+                                                <div class="m-l-10 m-r-10">
+                                                    <label for="fname" class="control-label text-left text-page" >First Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="m-l-10 m-r-10">
+                                                <input class=" form-control" id="fname" name="name" type="text"   placeholder="e.x. John" ngControl="firstname">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=""  [ngClass]="{ 'has-error' : !firstname.valid && submitAttempt }">
+                                            <div class="col-lg-2">
+                                                <div class="m-l-10 m-r-10">
+                                                    <label for="lname" class="control-label text-left text-page">Last Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4" [ngClass]="{ 'has-error' : !lastname.valid && submitAttempt }">
+                                                <div class="m-l-10 m-r-10">
+                                                <input class=" form-control" id="lname" name="name" type="text"   placeholder="e.x. Smith" ngControl="lastname">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : !email.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="email" class="control-label text-left text-page">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="email" name="name" type="email"   placeholder="e.x. johnsmith@gmail.com" ngControl="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="password" class="control-label text-left text-page">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="password" name="name" type="password"   placeholder="" value="fdafda5665" ngControl="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="phone" class="control-label text-left text-page">Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="phone" name="name" type="text"   placeholder="e.x. 1234567890" ngControl="phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : !organization.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="Organization" class="control-label text-left text-page">Organization</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="Organization" name="Organization" type="text"   placeholder="e.x. School1" ngControl="organization">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="department" class="control-label text-left text-page">Department</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="department" name="department" type="text"   placeholder="e.x. Mathematics" ngControl="department">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="white-space m-t-30 m-b-30">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="sr-only">Empty Space</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-l-5 m-r-5">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input type="button" (click)="cancel()" value="Cancel" class="btn btn-primary m-b-10 w-sm">
+                                    </div>
+                                    <div class="col-xs-8 text-right">
+                                        <input type="submit" value="Add Account" class="btn btn-primary m-b-10 w-sm m-l-15">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</section>

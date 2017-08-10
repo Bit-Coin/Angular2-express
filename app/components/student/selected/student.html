@@ -1,0 +1,12 @@
+<div *ngIf="currentContent.videoOrQuestion">
+	<student-video [content]="currentContent" [lessonname]="lessonname" [index]="lessonindex" [total]="lessontotal" (gotoNextContent)="gotoNextContent($event)" (gotoPreviousContent)="gotoPreviousContent($event)">
+	</student-video>
+</div>
+<div *ngIf="!currentContent.videoOrQuestion">
+	<div *ngIf="currentContent.singleOrMulti">
+		<student-choice [content]="currentContent" [lessonname]="lessonname" [index]="lessonindex" (gotoNextContent)="gotoNextContent($event)"  (gotoPreviousContent)="gotoPreviousContent($event)"></student-choice>
+	</div>
+	<div *ngIf="!currentContent.singleOrMulti">
+	<student-text [content]="currentContent" [lessonname]="lessonname" [index]="lessonindex" (gotoNextContent)="gotoNextContent($event)"  (gotoPreviousContent)="gotoPreviousContent($event)"></student-text>
+	</div>
+</div>

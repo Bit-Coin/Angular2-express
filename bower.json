@@ -1,0 +1,41 @@
+{
+  "name": "ng2-mean",
+  "description": "A MEAN stack built with Angular 2",
+  "main": "server.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "metisMenu": "~1.1.3",
+    "bootstrap-social": "~4.8.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.min.js",
+        "dist/css/bootstrap.min.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "css/font-awesome.min.css",
+        "scss/font-awesome.scss"
+      ]
+    }
+  },
+  "resolutions": {
+    "font-awesome": "^4.5.0"
+  }
+}

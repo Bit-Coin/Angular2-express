@@ -1,0 +1,164 @@
+
+<form [ngFormModel]="contentForm">
+    <div *ngIf="videoOrQuestion"> 
+        <div class="single">
+            <hr class="m-t-20 m-b-25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group"  [ngClass]="{ 'has-error' : !videoLabel.valid && submitAttempt}">
+                            <div class="col-lg-2">
+                                <div class="m-l-10 m-r-10">
+                                    <label for="fname" class="control-label text-left text-page">Video Label</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-l-10 m-r-10">
+                                <input class="text-page form-control videoLabel" id="fname" name="name" type="text" (blur)="blurChange(contentForm.value)" ngControl="videoLabel" value="">
+                                </div>
+                            </div>
+    					</div>
+    					<div class="form-group"  [ngClass]="{ 'has-error' : !videoEmbedCode.valid && submitAttempt }">
+                            <div class="col-lg-2">
+                                <div class="m-l-10 m-r-10">
+                                    <label for="lname" class="control-label text-left text-page">Video Embed Code</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="m-l-10 m-r-10">
+                                <textarea class="text-page form-control videoUrl" id="lname" name="name" type="text" (blur)="blurChange(contentForm.value)" ngControl="videoEmbedCode"></textarea>
+                                </div>
+                            </div>
+                        </div>
+    					<input type="hidden" class="type" name="type" value="video">
+                    </div>
+                </div>
+
+                <div class="m-l-5 m-r-5">
+                    <div class="row">
+                        
+                        <div class="col-xs-12 text-right">
+                           <span (click)="removeContent()" class="remove btn btn-primary m-b-10 w-sm m-l-10">Remove</span>
+                            <span (click)="addQuestionOrVideo(contentForm.value, false )" class="add-question btn btn-primary m-b-10 w-sm m-l-10">Add Question</span>
+                            <span (click)="addQuestionOrVideo(contentForm.value, true)"  class="add-video btn btn-primary m-b-10 w-sm m-l-10">Add Video</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+	</div>
+	
+    <div *ngIf="!videoOrQuestion">
+    	<div class="single">
+            <hr class="m-t-20 m-b-25">
+            <div class="container-fluid">
+                <div class="m-l-10 m-r-10 q-choose">
+                    <div class="form-group m-t-10">
+                        <div class="col-sm-4 col-md-3 col-lg-2">
+                            <label class="text-left text-page">Question Type</label>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-lg-2">
+                            <label class="cr-styled text-page">
+                                <strong class="m-r-5">Multyple Choice</strong>
+                                <input type="radio" name="multiChoice" value="1" class="r-question multipleChoice" (click)="choiceChange(true)" [checked] = "singleOrMulti == true" (blur)="blurChange(contentForm.value)"> 
+                                <i class="fa"></i>
+                            </label>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-lg-2">
+                            <label class="cr-styled text-page">
+                                <strong class="m-r-5">Text Response</strong>
+                                <input type="radio"  name="multiChoice" value="0" (click)="choiceChange(false)" [checked] = "singleOrMulti == false" class="r-question textResponce"> 
+                                <i class="fa"></i>
+                            </label>
+                        </div>
+                        
+                    </div> <!-- form-group -->
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2">
+                        <div class="m-l-10 m-r-10">
+                            <label for="q-input" class="control-label text-left text-page">Question</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-10" [ngClass]="{ 'has-error' : !question.valid && submitAttempt }">
+                        <div class="m-l-10 m-r-10">
+                            <input class="form-control alert alert-question text-page questionText" role="alert" value="" ngControl="question" (blur)="blurChange(contentForm.value)">
+                        </div>
+                    </div>
+                    <div *ngIf="singleOrMulti">
+                        <div class="box multipleChoiceBox">
+                            <div class="multi-q">
+                                <div class="answer-div">
+                                    <div class="col-lg-2">
+                                        <div class="m-l-10 m-r-10">
+                                            <label for="q-input" class="control-label text-left text-page">Answer A</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="m-l-10 m-r-10 answer-section">
+                                            <div [ngClass]="{ 'has-error' : !answerA.valid && submitAttempt }">
+                                                <input class="form-control alert alert-page text-page answerA" role="alert" ngControl="answerA" value="" (blur)="blurChange(contentForm.value)">
+                                            </div>
+                                            <label class="cr-styled">
+                                                <input type="radio" required  name="choosenAnswer" class="multipleChoiceAnswer" value="1" (click)="choiceAnswer(1)" (blur)="blurChange(contentForm.value)"  [checked]="trueNumber == 1">
+                                                <i class="fa"></i> 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-div">
+                                    <div class="col-lg-2">
+                                        <div class="m-l-10 m-r-10">
+                                            <label for="q-input" class="control-label text-left text-page">Answer B</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="m-l-10 m-r-10 answer-section">
+                                            <div [ngClass]="{ 'has-error' : !answerB.valid && submitAttempt }">
+                                                <input class="form-control alert alert-page text-page answerB" role="alert" value="" ngControl="answerB" (blur)="blurChange(contentForm.value)">
+                                            </div>
+                                            <label class="cr-styled">
+                                                <input type="radio" required  name="choosenAnswer" class="multipleChoiceAnswer" value="2" (click)="choiceAnswer(2)" (blur)="blurChange(contentForm.value)"  [checked]="trueNumber == 2">
+                                                <i class="fa"></i> 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-div">
+                                    <div class="col-lg-2">
+                                        <div class="m-l-10 m-r-10">
+                                            <label for="q-input" class="control-label text-left text-page">Answer C</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="m-l-10 m-r-10 answer-section">
+                                            <div [ngClass]="{ 'has-error' : !answerC.valid && submitAttempt }">
+                                                <input class="form-control alert alert-page text-page answerC" role="alert" value="" ngControl="answerC" (blur)="blurChange(contentForm.value)">
+                                            </div>    
+                                            <label class="cr-styled" >
+                                                <input type="radio"  name="choosenAnswer" class="multipleChoiceAnswer" required value="3" (click)="choiceAnswer(3)" (blur)="blurChange(contentForm.value)"  [checked]="trueNumber == 3">
+                                                <i class="fa"></i> 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    				<input type="hidden" class="type" name="type" value="question">
+                </div>
+
+                <div class="m-l-5 m-r-5">
+                    <div class="row">
+                        
+                        <div class="col-xs-12 text-right">
+                            <span (click)="removeContent()" class="remove btn btn-primary m-b-10 w-sm m-l-10">Remove</span>
+                            <span (click)="addQuestionOrVideo(contentForm.value, false )" class="add-question btn btn-primary m-b-10 w-sm m-l-10">Add Question</span>
+                            <span (click)="addQuestionOrVideo(contentForm.value, true)"  class="add-video btn btn-primary m-b-10 w-sm m-l-10">Add Video</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>	
+    </div>						
+</form>

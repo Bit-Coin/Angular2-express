@@ -1,0 +1,66 @@
+<div class="wrapper-page animated fadeInDown">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading"> 
+           <h3 class="text-center m-t-10"> Join Correct Care </h3>
+        </div> 
+
+        <form class="form-horizontal m-t-40" action="index.html" [ngFormModel]="OrganizeForm" (submit)="AddOrgs(OrganizeForm.value)">
+            <div class="text-danger">
+                <em *ngIf="registerFailure">This email was already registered.</em>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !firstname.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control" type="text" ngControl="firstname" required placeholder="First Name">
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !lastname.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control" type="text" required ngControl='lastname' placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !phone.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control" type="number" required ngControl="phone" placeholder="Phone Number">
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !organization.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control" type="text" required ngControl="organization" placeholder="Organization">
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !email.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control" type="email" required ngControl="email" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && submitAttempt }">
+                <div class="col-xs-12">
+                    <input class="form-control " type="password" required ngControl="password" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    <label class="cr-styled">
+                        <input type="checkbox" checked>
+                        <i class="fa"></i> 
+                         I accept <strong><a href="#">Terms and Conditions</a></strong>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group text-right">
+                <div class="col-xs-12">
+                    <button class="btn btn-purple w-md" type="submit">Register</button>
+                </div>
+            </div>
+
+            <div class="form-group m-t-30">
+                <div class="col-sm-12 text-center">
+                    <a [routerLink]="['Login']">Already have account?</a>
+                </div>
+            </div>
+        </form>                                  
+        
+    </div>
+<div class="wrapper-page animated fadeInDown">

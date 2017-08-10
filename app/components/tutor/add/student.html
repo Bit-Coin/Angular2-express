@@ -1,0 +1,132 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h3 class="text-page m-b-30"><strong>Add Student</strong></h3>
+        <div class="panel padd-min">
+            <div class="panel-heading">
+                <h3 class="text-page m-l-15 m-t-15"><strong>Student Details</strong></h3>
+            </div>
+            
+            <div class="panel-body">
+                <div class=" form">
+                    <form class="cmxform form-horizontal tasi-form"  [ngFormModel]="StudentForm" (submit)="AddStudent(StudentForm.value)">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <div class=""  [ngClass]="{ 'has-error' : !firstname.valid && submitAttempt }">
+                                            <div class="col-lg-2">
+                                                <div class="m-l-10 m-r-10">
+                                                    <label for="fname" class="control-label text-left text-page">First Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="m-l-10 m-r-10">
+                                                <input class=" form-control" id="fname" name="name" type="text" ngControl="firstname"  placeholder="student's first name" (blur)="getValue(StudentForm.value)">
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class=""  [ngClass]="{ 'has-error' : !lastname.valid && submitAttempt }">
+                                            <div class="col-lg-2">
+                                                <div class="m-l-10 m-r-10">
+                                                    <label for="lname" class="control-label text-left text-page">Last Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="m-l-10 m-r-10">
+                                                <input class=" form-control" id="lname" name="name" type="text" ngControl="lastname"  placeholder="student's last name" (blur)="getValue(StudentForm.value)">
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : !username.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="uname" class="control-label text-left text-page">Username</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="uname" name="name" type="text" ngControl="username"  placeholder="student's user id" readonly >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <div [ngClass]="{ 'has-error' : !password.valid && submitAttempt }">
+                                    <div class="col-lg-2">
+                                        <div class="m-l-10 m-r-10">
+                                            <label for="password" class="control-label text-left text-page">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="m-l-10 m-r-10">
+                                            <input class=" form-control" id="password" name="name" type="text" ngControl="password"  placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div [ngClass]="{ 'has-error' : !matchedPassword(StudentForm.value) && submitAttempt }">
+                                    <div class="col-lg-2">
+                                        <div class="m-l-10 m-r-10">
+                                            <label for="password" class="control-label text-left text-page">Verify Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="m-l-10 m-r-10">
+                                            <input class=" form-control" id="text" name="name" type="text" ngControl="verifiedpassword"  placeholder="">
+                                        </div>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div class="form-group" >
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="dob" class="control-label text-left text-page">DOB</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="dob" name="name" type="date"  ngControl="dob"  placeholder="student's date of birth">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="dob" class="control-label text-left text-page">Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class=" form-control" id="dob" name="name" type="text" ngControl="phone" maxlength="20" size="20" placeholder="student's phone number" (keyup)="onKey($event)" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="white-space m-t-30 m-b-30">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="sr-only">Empty Space</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-l-5 m-r-5">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input type="button" (click)="cancel()" value="Back" class="btn btn-primary m-b-10 w-sm">
+                                    </div>
+                                    <div class="col-xs-8 text-right">
+                                        <input type="button" (click)="cancel()" value="Cancel" class="btn btn-primary m-b-10 w-sm">
+                                        <input type="submit"  value="Save" class="btn btn-primary m-b-10 w-sm m-l-15">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</section>

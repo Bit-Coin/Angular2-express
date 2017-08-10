@@ -1,0 +1,20 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h2 class="text-page m-b-30"><strong>My Courses</strong></h2>
+        <div class="panel panel-color full-panel panel-primary m-b-30" *ngFor="let course of courseList" (click)="gotoLessonList(course)">
+            <div [class]="getHeadingClass(course)">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h3 class="m-t-10 m-b-10"><strong>{{getCourseName(course)}}</strong></h3>
+                    </div>
+                    <div class="col-xs-6">
+                        <h3 class="m-t-10 m-b-10 text-right"><strong>{{getCurrentStatus(course)}}</strong></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                {{course.coursedescription}}
+            </div>
+        </div>
+    </div>   
+</section>

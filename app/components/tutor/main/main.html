@@ -1,0 +1,144 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h2 class="text-page m-b-30"><strong>Tutor Adminstration</strong></h2>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#students" data-toggle="tab" aria-expanded="true"><strong class="text-page">All Students</strong></a>
+            </li>
+            <li class="">
+                <a href="#courses" data-toggle="tab" aria-expanded="false"><strong class="text-page">All Courses</strong></a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="students">
+                <div class="text-right m-b-30">
+                    <a  class="btn btn-primary w-sm m-r-5" (click)="gotoAddStudent()" >Add Student</a>
+                    <a class="btn btn-primary w-sm m-r-5" onClick="$('#file-uploader').click()">Import Students</a>
+                    <input type="file" id="file-uploader" (change)="importAddStudent($event)" style="display: none;"/>
+                    <a  class="btn btn-primary w-sm" data-toggle="modal" data-target="#select-course">Assign Course</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-page">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>DOB</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Other</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let student of studentList">
+                            <td>
+                                <label class="cr-styled">
+                                    <input type="checkbox" [(ngModel)]="student.isSelected">
+                                    <i class="fa"></i>
+                                </label>
+                            </td>
+                            <td (click)="gotoStudentDetail(student)" style="cursor: pointer;" ><strong>{{student.firstName}}</strong></td>
+                            <td  (click)="gotoStudentDetail(student)" style="cursor: pointer;" ><strong>{{student.lastName}}</strong></td>
+                            <td><strong>{{student.DOB}}</strong></td>
+                            <td  (click)="gotoStudentDetail(student)" style="cursor: pointer;" ><strong>{{student.username}}</strong></td>
+                            <td><strong>{{student.hashed_pwd}}</strong></td>
+                            <td><strong>other</strong></td>
+                            <td class="text-right"><a  class="btn w-xs btn-sm btn-primary" (click)="editStudent(student)">Edit</a></td>
+                        </tr>                        
+                    </table>
+                </div>
+                
+            </div>
+            <div class="tab-pane" id="courses">
+                <div class="table-responsive">
+                    <table class="table text-page">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Enrolled Students</th>
+                                <th>Past Students</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let course of courseList">
+                            <td (click)="gotoDetail(course)" style="cursor: pointer;" ><strong>{{course.coursetitle}}</strong></td>
+                            <td (click)="gotoDetail(course)" style="cursor: pointer;" > <strong>{{course.enrolled}}</strong></td>
+                            <td class="" >123</td>
+                            <td class="text-right"><a  class="btn btn-primary w-sm" data-toggle="modal" data-target="#select-student" (click)="beforeAssignStudent(course)">Assign Student</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>
+            <!--  Header Ends -->
+
+<div id="select-course" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+   <div class="modal-dialog"> 
+       <div class="modal-content"> 
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+               <h4 class="modal-title">Assign a Course</h4>
+           </div> 
+           <div class="modal-body assign-text"> 
+               <div class="row"> 
+                   <div class="col-md-12"> 
+                       <div class="form-group"> 
+                           <p>Click the arrow below to select a course and then click Assign.</p>
+                       </div> 
+                   </div> 
+               </div> 
+               
+           </div> 
+
+           <div class="modal-footer">
+			         	<div class="row"> 
+                   <div class="col-md-12"> 
+                      <select class="course-select" (change)="onSelectCourse($event.target.value)">
+                        <option *ngFor="let course of courseList" [value]="course.course_id">{{course.coursetitle}}</option>
+                      </select>
+                   </div> 
+               </div> 
+
+               <button type="button" class="btn btn-white" data-dismiss="modal">Close</button> 
+               <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="courseAssign()">Assign</button> 
+           </div> 
+       </div> 
+   </div>
+</div>
+
+<div id="select-student" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog"> 
+            <div class="modal-content"> 
+                <div class="modal-header"> 
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                    <h4 class="modal-title">Assign a Student</h4>
+                </div> 
+                <div class="modal-body assign-text"> 
+                    <div class="row"> 
+                        <div class="col-md-12"> 
+                            <div class="form-group"> 
+                                <p>Click the arrow below to select a student and then click Assign.</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    
+                </div> 
+				
+                <div class="modal-footer">
+					<div class="row"> 
+                        <div class="col-md-12"> 
+                            <select class="course-select" (change)="onSelectStudent($event.target.value)">
+                            <option *ngFor="let student of studentList" [ngValue]="student">{{student.firstName+ " " + student.lastName}}</option>
+              							</select>
+                        </div> 
+                    </div> 
+				
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button> 
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="studentAssign()">Assign</button> 
+                </div> 
+            </div> 
+        </div>
+    </div>

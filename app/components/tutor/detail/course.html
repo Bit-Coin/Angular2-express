@@ -1,0 +1,105 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h2 class="text-page m-b-30"><strong>{{getCourseName()}}</strong></h2>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="">
+                <a href="#profile" data-toggle="tab" aria-expanded="false"><strong class="text-page">Profile</strong></a>
+            </li>
+            <li class="active">
+                <a href="#students" data-toggle="tab" aria-expanded="true"><strong class="text-page">Students</strong></a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="profile">
+                <h3 class="text-page m-b-10 m-l-10 m-t-0">
+                    <strong>Course Detail</strong>
+                </h3>              
+                <hr class="m-b-30">     
+                <div class=" form">
+                    <form class="cmxform form-horizontal tasi-form" id="commentForm" method="get" action="#" novalidate="novalidate">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <div class="col-lg-2">
+                                            <div class="m-l-10 m-r-10">
+                                                <label for="fname" class="control-label text-left text-page">Course Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="m-l-10 m-r-10">
+                                            <input class=" form-control" id="fname" name="name" readonly="" type="text" placeholder="Course Name" [value]="course.coursetitle">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="m-l-10 m-r-10">
+                                                <label for="lname" class="control-label text-left text-page">Course Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="m-l-10 m-r-10">
+				<textarea class="page-color text-page form-control" id="cdescription" name="cdescription" type="text" readonly="">{{course.coursedescription}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="white-space m-t-30 m-b-30">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="sr-only">Empty Space</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-l-5 m-r-5">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input type="button" (click)="gotoTutorMain()" value="Back" class="btn btn-primary m-b-10 w-sm">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>                                   
+            </div>
+            <div class="tab-pane active" id="students">
+                <div class="table-responsive">
+                    <table class="table text-page">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th class="text-center">Completed</th>
+                                <th class="text-center">Score</th>
+                                <th class="text-center">Completion Date</th>
+                                <th class="text-center">Certificate</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let student of studentList">
+                            <td><strong>{{student.firstName + " " + student.lastName}}</strong></td>
+                            <td class="text-center"><strong>{{getComplete(student.isCompleted)}}</strong></td>
+                            <td class="text-center"><strong>{{student.score}}%</strong></td>
+                            <td class="text-center"><strong>{{student.completedAt}}</strong></td>
+                            <td class="text-center"><a href="#"><strong class="text-page">View</strong></a></td>
+                            
+                        </tr>                        
+                    </table>
+                </div>
+                            <div class="white-space m-t-30 m-b-30">
+                                <div class="row">
+                                    <div class="col-xs-10">
+                                        <span class="sr-only">Empty Space</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-l-0 m-r-0">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input type="submit" (click)="gotoTutorMain()" value="Back" class="btn btn-primary m-b-10 w-sm">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>                                   
+            </div>
+        
+</section>

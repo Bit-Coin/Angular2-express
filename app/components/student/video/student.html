@@ -1,0 +1,19 @@
+<section class="m-t-20 m-b-30">
+    <div class="container v-container">
+        <div class="row vertical-align">
+			<h2 class="text-page col-md-10"><strong>{{lessonname}}</strong></h2>
+			<h4 class="text-page col-md-2"><span class="pull-right">Lesson {{getIndex()}} of {{total}}</span></h4>
+		</div>
+    </div>
+    <div class="vsection-bg">
+        <div class="videolesson-section v-container container m-b-10">
+        <iframe src="{{getEmbedUrl()}}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="container v-container">
+		<div class="row vertical-align bottom">
+			<div class="col-md-6"><a  class="btn btn-primary" (click)="gotoPrevious()">Back</a></div>
+			<div class="col-md-6"><h4 class="text-page pull-right">Questions will appear after the video. &nbsp;&nbsp;<a  class="btn btn-primary"(click)="gotoNext()" >Next</a></h4></div>
+		</div>                
+	</div>   
+</section>

@@ -1,0 +1,87 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h2 class="text-page m-b-30"><strong>Global Admin</strong></h2>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#courses" data-toggle="tab" aria-expanded="false"><strong class="text-page">Courses</strong></a>
+            </li>
+            <li class="">
+                <a href="#organization" data-toggle="tab" aria-expanded="true"><strong class="text-page">Tutor/Organization</strong></a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="courses">
+                <div class="text-right m-b-30">
+                    <a class="btn btn-primary w-sm" (click)="gotoAddCourse()" >Add Course</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-page">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Course Title</th>
+                                <th>Lessons</th>
+                                <th>Videos</th>
+                                <th>Entrolled Students</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let course of courseList">
+                            <td>
+                                <label class="cr-styled">
+                                    <input type="checkbox">
+                                    <i class="fa"></i>
+                                </label>
+                            </td>
+                            <td><strong>{{course.title}}</strong></td>
+                            <td><strong>{{course.lesson}}</strong></td>
+                            <td><strong>{{course.video}}</strong></td>
+                            <td><strong>{{course.student}}</strong></td>
+                            <td class="text-right"><a  class="btn w-xs btn-sm btn-primary" (click)="editCourse(course)">Edit</a></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane" id="organization">
+                <div class="text-right m-b-30">
+                    <a  class="btn btn-primary w-sm" [routerLink]="['AdminAddOrganization']">Add Organization</a>
+                    <a  class="btn btn-primary w-sm" (click)="removeOrg()">Remove Organization</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-page">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Organization</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Students</th>
+                                <th>Last Logon</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let org of orgList">
+                            <td>
+                                <label class="cr-styled">
+                                    <input type="checkbox" (change)="checkOrganization($event, org)">
+                                    <i class="fa"></i>
+                                </label>
+                            </td>
+                            <td><strong>{{org.organization}}</strong></td>
+                            <td><strong>{{org.firstname}}</strong></td>
+                            <td><strong>{{org.lastname}}</strong></td>
+                            <td><strong>{{org.phone}}</strong></td>
+                            <td><strong>{{org.email}}</strong></td>
+                            <td><strong>{{org.student}}</strong></td>
+                            <td><strong>{{org.lastlogon.toString().slice(0,10)}}</strong></td>
+                            <td class="text-right"><a class="btn w-xs btn-sm btn-primary" (click)="gotoEdit(org)">Edit</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>

@@ -1,0 +1,91 @@
+doctype
+html
+	head
+		title LEARNING WITH VIDEO
+		base(href="/")
+		//- bower:css
+		link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
+		link(rel='stylesheet', href='/vendor/metisMenu/dist/metisMenu.css')
+		link(rel='stylesheet', href='/vendor/bootstrap-social/bootstrap-social.css')
+		//- endbower
+		//- inject:css
+
+		link(rel="stylesheet", href="/css/1-theme.css")
+
+		link(rel="stylesheet", href="/css/animate.css")
+
+		link(rel="stylesheet", href="/css/bootstrap-reset.css")
+
+		link(rel="stylesheet", href="/css/helper.css")
+
+		link(rel="stylesheet", href="/css/style-responsive.css")
+
+		link(rel="stylesheet", href="/css/style.css")
+
+		link(rel="stylesheet", href="/css/morris/morris.css")
+
+		link(rel="stylesheet", href="/css/font-awesome/css/font-awesome.css")
+
+		link(rel="stylesheet", href="/css/font-awesome/css/font-awesome.min.css")
+
+		link(rel="stylesheet", href="/css/ionicon/css/ionicons.css")
+
+		link(rel="stylesheet", href="/css/ionicon/css/ionicons.min.css")
+
+		//- endinject
+		script(src="/es6-shim/es6-shim.min.js")
+		script(src="/systemjs/dist/system-polyfills.js")
+		script(src="/angular2/es6/dev/src/testing/shims_for_IE.js")
+		script(src="angular2/bundles/angular2-polyfills.js")
+		script(src="systemjs/dist/system.src.js")
+		script(src="rxjs/bundles/Rx.js")
+		script(src="angular2/bundles/angular2.dev.js")
+		script(src="angular2/bundles/router.dev.js")
+		script(src="angular2/bundles/http.dev.js")
+
+		//- Auth0 Lock script
+		script(src="//cdn.auth0.com/js/lock-9.0.min.js")
+
+		//- Setting the right viewport
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		script(type="text/javascript").
+			System.config({
+				defaultJSExtensions: true,
+				packages: {
+					"app": {
+						format: 'register',
+						defaultExtension: 'js'
+					},
+					"/angular2-jwt": {
+						defaultExtension: 'js'
+					}
+				},
+				map: {
+					"angular2-jwt": "angular2-jwt/angular2-jwt"
+				}
+			});
+			System.import('app/main');
+	body
+		div(id="wrapper")
+			block main-content
+
+		//- bower:js
+		script(src='/vendor/jquery/dist/jquery.js')
+		script(src='/vendor/bootstrap/dist/js/bootstrap.min.js')
+		script(src='/vendor/metisMenu/dist/metisMenu.js')
+		//- endbower
+		//- inject:js
+
+		script(src="/js/1-theme.js")
+
+		script(src="/js/jquery.app.js")
+
+		script(src="/js/jquery.nicescroll.js")
+
+		script(src="/js/pace.min.js")
+
+		script(src="/js/wow.min.js")
+
+		//- endinject

@@ -1,0 +1,63 @@
+<section class="m-t-20 m-b-30">
+    <div class="container">
+        <h3 class="text-page m-b-30"><strong>Add Lesson</strong></h3>
+        <div class="panel padd-min">
+            <div class="panel-heading">
+                <h3 class="text-page m-l-15 m-t-15 m-b-0"><strong>Lesson Name</strong></h3>
+            </div>
+            
+            <div class="panel-body">
+                <div class=" form">
+                    <form class="cmxform form-horizontal tasi-form" [ngFormModel]="lessonForm" (submit)="SubmitLesson(lessonForm.value)" novalidate="novalidate">
+                        <div class="container-fluid">
+                            
+                            <div class="form-group" [ngClass]="{ 'has-error' : !lessonname.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="lname" class="control-label text-left text-page">Lesson Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <input class="text-page form-control lessonName" id="lname" name="name" type="text" ngControl="lessonname" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : !lessondescription.valid && submitAttempt }">
+                                <div class="col-lg-2">
+                                    <div class="m-l-10 m-r-10">
+                                        <label for="cdescription" class="control-label text-left text-page">Lesson Description</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="m-l-10 m-r-10">
+                                        <textarea class="page-color text-page form-control lessonDescriprion" id="cdescription" name="description" type="text" ngControl="lessondescription" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                         
+                        <lesson-content *ngFor="let con of contents"
+                            [content]="con" (manageContent)="manageContent($event)" >
+                        </lesson-content>
+                        <hr class="m-t-10 m-b-25">
+                        <div class="container-fluid">
+                            <div class="m-l-5 m-r-5">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input type="button" name="submit-btn" value="Cancel" class="btn btn-primary m-b-10 w-sm" (click)="cancel()">
+                                    </div>
+                                    <div class="col-xs-8 text-right">
+                                        <input type="button" (click)="addNextLesson(lessonForm)" value="Add Next Lesson" class="btn btn-primary m-b-10 w-sm">
+                                        <input type="submit" name="submit-btn" value="Save" class="btn btn-primary m-b-10 w-sm m-l-10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</section>
