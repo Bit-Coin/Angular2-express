@@ -9,7 +9,9 @@
     "tsc": "tsc",
     "tsc:w": "tsc:w",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "",
   "license": "ISC",
@@ -35,7 +37,8 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "^5.0.0-beta.4",
     "systemjs": "^0.19.24",
-    "zone.js": "^0.6.6"
+    "zone.js": "^0.6.6",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
@@ -62,5 +65,6 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "wiredep": "^3.0.0"
-  }
+  },
+  "snyk": true
 }
